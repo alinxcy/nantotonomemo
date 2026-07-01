@@ -95,17 +95,17 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus">保存中…</div>
-  <h1>2026-07-02</h1>
+  <div class="save-status" id="saveStatus"></div>
+  <h1>2026-07-03</h1>
   <div class="status">
-    今日からログ運用スタートです。「つくる人」タイプなので、手を動かす系を少し多めにしています。
+    昨日は落書き・読書・片付け・料理・記録の5つを提示。今日はまだ触れていないジャンルを多めにしました。
   </div>
 
   <div class="task">
     <input type="checkbox" id="t1">
     <label for="t1">
-      手近な紙にペンで思いついた形を3つだけ落書きする
-      <span class="time">2分・創作</span>
+      「ありがとう」を意味する外国語をひとつ調べて声に出す
+      <span class="time">2分・語学</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -117,8 +117,8 @@
   <div class="task">
     <input type="checkbox" id="t2">
     <label for="t2">
-      本棚から1冊選び、目次だけ読んで気になった章に付箋を貼る
-      <span class="time">5分・読書</span>
+      スマホの写真フォルダから1枚選び、なぜその瞬間を撮ったか一言書き出す
+      <span class="time">3分・趣味</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -130,8 +130,8 @@
   <div class="task">
     <input type="checkbox" id="t3">
     <label for="t3">
-      財布やカバンの中身をひとつだけ、正しい定位置に戻す
-      <span class="time">1分・片付け</span>
+      使っていないアプリをスマホから1つだけアンインストールする
+      <span class="time">1分・整理</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -143,8 +143,8 @@
   <div class="task">
     <input type="checkbox" id="t4">
     <label for="t4">
-      冷蔵庫の調味料をひとつ選び、パッケージ裏のおすすめの使い方を1つ試す
-      <span class="time">10分・料理</span>
+      気になっている仕組み・言葉をひとつ選び、人に説明できるレベルまで調べる
+      <span class="time">10分・学び</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -156,8 +156,8 @@
   <div class="task">
     <input type="checkbox" id="t5">
     <label for="t5">
-      その日あった小さな出来事を1行だけノートに書く(7日間続けると1週間分の記録になる)
-      <span class="time">1日3分×7日・記録</span>
+      その日「ちょっと良かったこと」を1行書く(7日間続けると振り返りの種になる)
+      <span class="time">1日2分×7日・記録</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -167,8 +167,7 @@
   </div>
 
   <div class="label-small">今日のひとこと(任意)</div>
-  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも">今日は在宅教育キャンセルして出社しました。面白そうな予定がいっぱいあったので。アクションおこして日程変更してよかった。
-AIベースで不具合究明するようにしたいですね。</textarea>
+  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも"></textarea>
 
 <script>
 document.querySelectorAll('.rx').forEach(function(btn){
