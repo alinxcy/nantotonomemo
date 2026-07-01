@@ -85,10 +85,18 @@
     margin-top: 24px;
     margin-bottom: 4px;
   }
+  .save-status {
+    position: fixed;
+    top: 10px;
+    right: 14px;
+    font-size: 11px;
+    color: #bbb;
+  }
 </style>
 </head>
 <body>
 
+  <div class="save-status" id="saveStatus"></div>
   <h1>2026-07-02</h1>
   <div class="status">
     今日からログ運用スタートです。「つくる人」タイプなので、手を動かす系を少し多めにしています。
@@ -168,8 +176,88 @@ document.querySelectorAll('.rx').forEach(function(btn){
     var group = btn.parentElement.querySelectorAll('.rx');
     group.forEach(function(b){ b.classList.remove('selected'); });
     btn.classList.add('selected');
+    scheduleSave();
   });
 });
+
+// ── 自動保存(GitHub Contents APIへの書き戻し) ──
+var GH_OWNER = 'alinxcy';
+var GH_REPO = 'nantotonomemo';
+var GH_PATH = 'today.html';
+var GH_BRANCH = 'main';
+var statusEl = document.getElementById('saveStatus');
+var saveTimer = null;
+
+function getToken() {
+  var t = localStorage.getItem('gh_pat');
+  if (!t) {
+    t = prompt('GitHubのPersonal Access Token(contents:write, このリポジトリのみ)を入力してください');
+    if (t) localStorage.setItem('gh_pat', t);
+  }
+  return t;
+}
+
+function serializeCurrentState() {
+  document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
+    if (cb.checked) cb.setAttribute('checked', ''); else cb.removeAttribute('checked');
+  });
+  var ta = document.querySelector('textarea');
+  if (ta) ta.textContent = ta.value;
+  return '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+}
+
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  statusEl.textContent = '保存待ち…';
+  saveTimer = setTimeout(saveState, 1000);
+}
+
+function saveState() {
+  var token = getToken();
+  if (!token) { statusEl.textContent = 'トークン未設定'; return; }
+  statusEl.textContent = '保存中…';
+  var api = 'https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/contents/' + GH_PATH;
+
+  fetch(api + '?ref=' + GH_BRANCH, {
+    headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' }
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(current){
+    var content = serializeCurrentState();
+    var body = {
+      message: '自動保存: today.html更新',
+      content: btoa(unescape(encodeURIComponent(content))),
+      sha: current.sha,
+      branch: GH_BRANCH
+    };
+    return fetch(api, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+  })
+  .then(function(res){
+    if (res.ok) {
+      statusEl.textContent = '保存済み ' + new Date().toLocaleTimeString('ja-JP');
+    } else if (res.status === 401) {
+      localStorage.removeItem('gh_pat');
+      statusEl.textContent = 'トークンが無効です。再読み込みして入力し直してください';
+    } else {
+      statusEl.textContent = '保存失敗(' + res.status + ')';
+    }
+  })
+  .catch(function(){ statusEl.textContent = '通信エラー'; });
+}
+
+document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
+  cb.addEventListener('change', scheduleSave);
+});
+var taEl = document.querySelector('textarea');
+if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
 </body>
 </html>
