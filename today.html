@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>今日のメモ</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 0 16px;
+    color: #222;
+  }
+  h1 {
+    font-size: 16px;
+    color: #888;
+    font-weight: normal;
+    margin-bottom: 4px;
+  }
+  .status {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 28px;
+    line-height: 1.6;
+    border-left: 3px solid #ddd;
+    padding-left: 10px;
+  }
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+  .task input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  .task label {
+    flex: 1;
+    cursor: pointer;
+  }
+  .task .time {
+    display: block;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 2px;
+  }
+  .rx-group {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .rx {
+    font-size: 11px;
+    color: #999;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 3px 8px;
+    cursor: pointer;
+  }
+  .rx.selected[data-v="good"] { background: #e6f5ea; border-color: #9bd4ab; color: #2e7d42; }
+  .rx.selected[data-v="neutral"] { background: #eee; border-color: #ccc; color: #555; }
+  .rx.selected[data-v="bad"] { background: #fbe9e9; border-color: #e8a3a3; color: #b03333; }
+  textarea {
+    width: 100%;
+    height: 70px;
+    margin-top: 24px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  .label-small {
+    font-size: 12px;
+    color: #999;
+    margin-top: 24px;
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>2026-07-02</h1>
+  <div class="status">
+    今日からログ運用スタートです。「つくる人」タイプなので、手を動かす系を少し多めにしています。
+  </div>
+
+  <div class="task">
+    <input type="checkbox" id="t1">
+    <label for="t1">
+      手近な紙にペンで思いついた形を3つだけ落書きする
+      <span class="time">2分・創作</span>
+    </label>
+    <div class="rx-group">
+      <button type="button" class="rx" data-v="good">😊</button>
+      <button type="button" class="rx" data-v="neutral">😐</button>
+      <button type="button" class="rx" data-v="bad">😕</button>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox" id="t2">
+    <label for="t2">
+      本棚から1冊選び、目次だけ読んで気になった章に付箋を貼る
+      <span class="time">5分・読書</span>
+    </label>
+    <div class="rx-group">
+      <button type="button" class="rx" data-v="good">😊</button>
+      <button type="button" class="rx" data-v="neutral">😐</button>
+      <button type="button" class="rx" data-v="bad">😕</button>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox" id="t3">
+    <label for="t3">
+      財布やカバンの中身をひとつだけ、正しい定位置に戻す
+      <span class="time">1分・片付け</span>
+    </label>
+    <div class="rx-group">
+      <button type="button" class="rx" data-v="good">😊</button>
+      <button type="button" class="rx" data-v="neutral">😐</button>
+      <button type="button" class="rx" data-v="bad">😕</button>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox" id="t4">
+    <label for="t4">
+      冷蔵庫の調味料をひとつ選び、パッケージ裏のおすすめの使い方を1つ試す
+      <span class="time">10分・料理</span>
+    </label>
+    <div class="rx-group">
+      <button type="button" class="rx" data-v="good">😊</button>
+      <button type="button" class="rx" data-v="neutral">😐</button>
+      <button type="button" class="rx" data-v="bad">😕</button>
+    </div>
+  </div>
+
+  <div class="task">
+    <input type="checkbox" id="t5">
+    <label for="t5">
+      その日あった小さな出来事を1行だけノートに書く(7日間続けると1週間分の記録になる)
+      <span class="time">1日3分×7日・記録</span>
+    </label>
+    <div class="rx-group">
+      <button type="button" class="rx" data-v="good">😊</button>
+      <button type="button" class="rx" data-v="neutral">😐</button>
+      <button type="button" class="rx" data-v="bad">😕</button>
+    </div>
+  </div>
+
+  <div class="label-small">今日のひとこと(任意)</div>
+  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも"></textarea>
+
+<script>
+document.querySelectorAll('.rx').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var group = btn.parentElement.querySelectorAll('.rx');
+    group.forEach(function(b){ b.classList.remove('selected'); });
+    btn.classList.add('selected');
+  });
+});
+</script>
+</body>
+</html>
