@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>はじめに</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 0 16px;
+    color: #222;
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: normal;
+    color: #444;
+    margin-bottom: 4px;
+  }
+  .sub {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .progress-bar {
+    height: 3px;
+    background: #eee;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: #aaa;
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+  .question {
+    display: none;
+  }
+  .question.active {
+    display: block;
+  }
+  .q-label {
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .option {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    background: #fafafa;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .option:hover { background: #f0f0f0; }
+  .option.selected { border-color: #888; background: #f0f0f0; }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+  .btn {
+    font-size: 14px;
+    padding: 9px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+  }
+  .btn:disabled { opacity: 0.3; cursor: default; }
+
+  /* 結果画面 */
+  #result { display: none; }
+  .type-badge {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  .type-desc {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 24px;
+  }
+  .profile-output {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 12px;
+    font-family: monospace;
+    color: #555;
+    white-space: pre-wrap;
+    line-height: 1.7;
+  }
+  .profile-label {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div id="quiz">
+  <h1>はじめに、少し教えてください。</h1>
+  <p class="sub">あなたに合ったタスクを提案するための初回設定です。<br>直感で選んでください。15問、3分ほどです。</p>
+
+  <div class="progress-bar"><div class="progress-fill" id="fill" style="width:0%"></div></div>
+
+  <!-- Q1 -->
+  <div class="question active" data-q="1">
+    <div class="q-label">1 / 15</div>
+    <div class="q-text">暇な時間が突然できたとき、まず頭に浮かぶのは？</div>
+    <div class="options">
+      <button class="option" data-axis="CE" data-val="C">何かを作ったり書いたりしたい</button>
+      <button class="option" data-axis="CE" data-val="E">まずは部屋や身のまわりを整えたい</button>
+      <button class="option" data-axis="CE" data-val="N">何も浮かばず、気づいたらスマホを見ている</button>
+      <button class="option" data-axis="CE" data-val="L">何か面白いことを調べたり学んだりしたい</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question" data-q="2">
+    <div class="q-label">2 / 15</div>
+    <div class="q-text">新しいことを始めるとき、自分はどちらに近い？</div>
+    <div class="options">
+      <button class="option" data-axis="PI" data-val="P">ある程度計画してから動く</button>
+      <button class="option" data-axis="PI" data-val="I">とりあえず手を動かしてから考える</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question" data-q="3">
+    <div class="q-label">3 / 15</div>
+    <div class="q-text">一人の時間と誰かといる時間、エネルギーが回復するのはどちら？</div>
+    <div class="options">
+      <button class="option" data-axis="SI" data-val="S">一人でいる時間</button>
+      <button class="option" data-axis="SI" data-val="I">誰かといる時間</button>
+      <button class="option" data-axis="SI" data-val="N">どちらとも言えない</button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question" data-q="4">
+    <div class="q-label">4 / 15</div>
+    <div class="q-text">習慣にしようと思ったとき、続けやすいのは？</div>
+    <div class="options">
+      <button class="option" data-axis="DS" data-val="D">毎日1〜3分、とにかく短くていいから毎日やる</button>
+      <button class="option" data-axis="DS" data-val="S">週に2〜3回、まとまった時間でやる</button>
+      <button class="option" data-axis="DS" data-val="N">そもそも習慣化が苦手</button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question" data-q="5">
+    <div class="q-label">5 / 15</div>
+    <div class="q-text">タスクをやり遂げたとき、満足感が高いのはどんな時？</div>
+    <div class="options">
+      <button class="option" data-axis="FP" data-val="F">目に見える形(モノ・成果物)が残ったとき</button>
+      <button class="option" data-axis="FP" data-val="P">「できた」という達成感そのもの</button>
+      <button class="option" data-axis="FP" data-val="K">新しいことを知れた・学べたとき</button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question" data-q="6">
+    <div class="q-label">6 / 15</div>
+    <div class="q-text">完璧にできなくても「まあいいか」と切り上げられる？</div>
+    <div class="options">
+      <button class="option" data-axis="PF" data-val="P">わりと切り上げられる</button>
+      <button class="option" data-axis="PF" data-val="F">気になってなかなか切り上げられない</button>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question" data-q="7">
+    <div class="q-label">7 / 15</div>
+    <div class="q-text">今の生活で「もう少し時間を使いたい」と思うものは？(直感で一つ)</div>
+    <div class="options">
+      <button class="option" data-axis="WANT" data-val="create">モノを作る・書く・描く</button>
+      <button class="option" data-axis="WANT" data-val="learn">知識・語学・読書</button>
+      <button class="option" data-axis="WANT" data-val="cook">料理・食</button>
+      <button class="option" data-axis="WANT" data-val="tidy">片付け・整理</button>
+      <button class="option" data-axis="WANT" data-val="hobby">趣味(音楽・手芸・写真など)</button>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question" data-q="8">
+    <div class="q-label">8 / 15</div>
+    <div class="q-text">「絶対やりたくない」に近いものは？</div>
+    <div class="options">
+      <button class="option" data-axis="AVOID" data-val="tidy">片付け・掃除系</button>
+      <button class="option" data-axis="AVOID" data-val="create">創作・ものを作る系</button>
+      <button class="option" data-axis="AVOID" data-val="learn">勉強・調べる系</button>
+      <button class="option" data-axis="AVOID" data-val="cook">料理系</button>
+      <button class="option" data-axis="AVOID" data-val="none">特にない</button>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question" data-q="9">
+    <div class="q-label">9 / 15</div>
+    <div class="q-text">1分で終わるタスクと20分かかるタスク、どちらが好み？</div>
+    <div class="options">
+      <button class="option" data-axis="TL" data-val="S">1分・即終わる系が好き</button>
+      <button class="option" data-axis="TL" data-val="L">多少時間かかっても充実感のある方が好き</button>
+      <button class="option" data-axis="TL" data-val="M">そのとき次第</button>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question" data-q="10">
+    <div class="q-label">10 / 15</div>
+    <div class="q-text">過去に習慣化しようとして挫折した経験がある？</div>
+    <div class="options">
+      <button class="option" data-axis="HABIT" data-val="yes_high">よくある。だいたい三日坊主</button>
+      <button class="option" data-axis="HABIT" data-val="yes_mid">たまにある。条件次第では続く</button>
+      <button class="option" data-axis="HABIT" data-val="no">あまりない</button>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="question" data-q="11">
+    <div class="q-label">11 / 15</div>
+    <div class="q-text">提案のトーンはどちらが好み？</div>
+    <div class="options">
+      <button class="option" data-axis="TONE" data-val="flat">ぶっきらぼうでいい、余計な言葉は不要</button>
+      <button class="option" data-axis="TONE" data-val="warm">少し温かみのある言い方が好き</button>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="question" data-q="12">
+    <div class="q-label">12 / 15</div>
+    <div class="q-text">平日と休日で自由な時間の量はかなり違う？</div>
+    <div class="options">
+      <button class="option" data-axis="WEEK" data-val="big">かなり違う</button>
+      <button class="option" data-axis="WEEK" data-val="small">あまり変わらない</button>
+      <button class="option" data-axis="WEEK" data-val="irregular">不規則でどちらとも言えない</button>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="question" data-q="13">
+    <div class="q-label">13 / 15</div>
+    <div class="q-text">手持ち無沙汰になりやすいのはいつ頃？</div>
+    <div class="options">
+      <button class="option" data-axis="TIME" data-val="morning">朝〜午前</button>
+      <button class="option" data-axis="TIME" data-val="afternoon">昼〜夕方</button>
+      <button class="option" data-axis="TIME" data-val="night">夜</button>
+      <button class="option" data-axis="TIME" data-val="random">バラバラ</button>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="question" data-q="14">
+    <div class="q-label">14 / 15</div>
+    <div class="q-text">タスクのお題は具体的な方がいい？それとも少し余白があった方がいい？</div>
+    <div class="options">
+      <button class="option" data-axis="SPEC" data-val="high">完全に具体的な方がいい(迷いたくない)</button>
+      <button class="option" data-axis="SPEC" data-val="low">ある程度余白があった方が自分でアレンジできて好き</button>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="question" data-q="15">
+    <div class="q-label">15 / 15</div>
+    <div class="q-text">「一日が充実した」と感じるのは、どんな日？</div>
+    <div class="options">
+      <button class="option" data-axis="FEEL" data-val="done">やることをこなせた日</button>
+      <button class="option" data-axis="FEEL" data-val="new">新しいことをひとつでも試せた日</button>
+      <button class="option" data-axis="FEEL" data-val="flow">気づいたら集中していた、のめり込めた日</button>
+      <button class="option" data-axis="FEEL" data-val="neat">部屋や環境がすっきりした日</button>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="btn" id="btn-back" disabled onclick="prevQ()">← 戻る</button>
+    <button class="btn btn-primary" id="btn-next" disabled onclick="nextQ()">次へ →</button>
+  </div>
+</div>
+
+<!-- 結果画面 -->
+<div id="result">
+  <h1>診断結果</h1>
+  <div class="type-badge" id="type-name"></div>
+  <div class="type-desc" id="type-desc"></div>
+  <div class="profile-label">▼ profile.md に書き込まれる内容(自動生成)</div>
+  <div class="profile-output" id="profile-out"></div>
+</div>
+
+<script>
+const total = 15;
+let current = 1;
+const answers = {};
+
+function updateProgress() {
+  document.getElementById('fill').style.width = ((current - 1) / total * 100) + '%';
+}
+
+function showQ(n) {
+  document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+  document.querySelector('[data-q="' + n + '"]').classList.add('active');
+  document.getElementById('btn-back').disabled = (n === 1);
+  document.getElementById('btn-next').disabled = !answers[n];
+  updateProgress();
+}
+
+document.querySelectorAll('.option').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const qEl = btn.closest('.question');
+    qEl.querySelectorAll('.option').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    answers[current] = { axis: btn.dataset.axis, val: btn.dataset.val };
+    document.getElementById('btn-next').disabled = false;
+  });
+});
+
+function nextQ() {
+  if (current < total) {
+    current++;
+    showQ(current);
+  } else {
+    showResult();
+  }
+}
+
+function prevQ() {
+  if (current > 1) {
+    current--;
+    showQ(current);
+  }
+}
+
+function showResult() {
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
+
+  // 簡易タイプ判定
+  const want = (answers[7] || {}).val || 'learn';
+  const avoid = (answers[8] || {}).val || 'none';
+  const tl = (answers[9] || {}).val || 'M';
+  const habit = (answers[10] || {}).val || 'yes_mid';
+  const feel = (answers[15] || {}).val || 'done';
+  const tone = (answers[11] || {}).val || 'flat';
+  const spec = (answers[14] || {}).val || 'high';
+  const time = (answers[13] || {}).val || 'random';
+  const week = (answers[12] || {}).val || 'irregular';
+  const pi = (answers[2] || {}).val || 'I';
+
+  const typeMap = {
+    create: ['つくる人', 'アイデアを形にすることにエネルギーが湧くタイプ。完成品よりも「手を動かしている時間」自体が充実感になりやすい。'],
+    learn:  ['探求する人', '知ることそのものが楽しいタイプ。雑多な知識が積み上がっていく感覚に充実感を覚えやすい。'],
+    cook:   ['五感で動く人', '身体を使い、目に見える変化があるタスクに向いている。料理や手を使う作業でスイッチが入りやすい。'],
+    tidy:   ['整える人', '環境が整うと気持ちが落ち着くタイプ。「片付いた」という実感が強いモチベーションになる。'],
+    hobby:  ['没頭する人', '好きなことへの集中力は高いが、興味がないと動けない傾向もある。好奇心に乗せる形のタスクが合いやすい。'],
+  };
+  const [typeName, typeDescText] = typeMap[want] || typeMap['learn'];
+
+  document.getElementById('type-name').textContent = typeName;
+  document.getElementById('type-desc').textContent = typeDescText;
+
+  const avoidLabel = { tidy:'片付け系', create:'創作系', learn:'学び・調べる系', cook:'料理系', none:'特になし' }[avoid] || '特になし';
+  const tlLabel = { S:'短時間(1〜3分)優先', L:'ある程度かかるタスクも歓迎', M:'その日次第' }[tl] || 'その日次第';
+  const habitLabel = { yes_high:'習慣化は苦手(三日坊主気味)', yes_mid:'条件次第では続く', no:'比較的続けられる' }[habit] || '';
+  const toneLabel = { flat:'余計な言葉は不要、端的に', warm:'少し温かみのある言い方が好き' }[tone] || '';
+  const specLabel = { high:'完全に具体的(迷いたくない)', low:'ある程度余白があってもOK' }[spec] || '';
+  const timeLabel = { morning:'朝〜午前', afternoon:'昼〜夕方', night:'夜', random:'バラバラ' }[time] || 'バラバラ';
+  const weekLabel = { big:'平日と休日でかなり違う', small:'あまり変わらない', irregular:'不規則' }[week] || '';
+  const piLabel = { P:'計画してから動く派', I:'まず手を動かす派' }[pi] || '';
+  const feelLabel = { done:'やることをこなせた日', new:'新しいことを試せた日', flow:'のめり込めた日', neat:'環境がすっきりした日' }[feel] || '';
+
+  const profile = `# Profile(安定的な人物像)
+# 初回診断より自動生成。随時追記・修正。
+
+## 基本タイプ
+${typeName} — ${typeDescText}
+
+## 基本方針
+- 運動系のタスクは提案しない
+- スマホを使わないタスクを優先する
+- 反応(😊😐😕)はあくまで参考情報。😕がついたジャンルを積極的に
+  避けたり頻度を下げたりはしない
+
+## 好みのジャンル
+- 特に時間を使いたい: ${avoidLabel !== '特になし' ? Object.keys({tidy:'片付け系',create:'創作系',learn:'学び系',cook:'料理系',hobby:'趣味系'}).map(k=>({tidy:'片付け系',create:'創作系',learn:'学び系',cook:'料理系',hobby:'趣味系'}[k])).find((_,i)=>i===0) || '' : ''}${want === 'create' ? '創作・ものづくり' : want === 'learn' ? '学び・読書・語学' : want === 'cook' ? '料理・食' : want === 'tidy' ? '片付け・整理' : '趣味全般'}
+- 避けたいジャンル: ${avoidLabel}
+
+## タスクの傾向
+- 時間感覚: ${tlLabel}
+- 具体性: ${specLabel}
+- 習慣化傾向: ${habitLabel}
+- 動き方: ${piLabel}
+
+## 提案のトーン
+${toneLabel}
+
+## 生活パターン(初期推測)
+- 手持ち無沙汰になりやすい時間帯: ${timeLabel}
+- 平日/休日の差: ${weekLabel}
+- 充実感を感じやすい日: ${feelLabel}
+
+## 明示的な要望(ユーザーコメントより随時追記)
+(まだなし)
+
+## ジャンルごとの傾向(log.mdから随時更新)
+(まだなし、データ蓄積後に追記)`;
+
+  document.getElementById('profile-out').textContent = profile;
+}
+</script>
+</body>
+</html>
