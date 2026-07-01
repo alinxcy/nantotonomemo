@@ -223,7 +223,8 @@ function saveState(attempt) {
   statusEl.textContent = '保存中…';
   var api = 'https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/contents/' + GH_PATH;
 
-  fetch(api + '?ref=' + GH_BRANCH, {
+  fetch(api + '?ref=' + GH_BRANCH + '&_=' + Date.now(), {
+    cache: 'no-store',
     headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' }
   })
   .then(function(res){ return res.json(); })
