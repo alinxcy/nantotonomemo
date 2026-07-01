@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
 <meta charset="UTF-8">
 <title>今日のメモ</title>
 <style>
@@ -96,14 +95,14 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus"></div>
+  <div class="save-status" id="saveStatus">保存中…</div>
   <h1>2026-07-02</h1>
   <div class="status">
     今日からログ運用スタートです。「つくる人」タイプなので、手を動かす系を少し多めにしています。
   </div>
 
   <div class="task">
-    <input type="checkbox" id="t1">
+    <input type="checkbox" id="t1" checked="">
     <label for="t1">
       手近な紙にペンで思いついた形を3つだけ落書きする
       <span class="time">2分・創作</span>
@@ -259,5 +258,6 @@ document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
 var taEl = document.querySelector('textarea');
 if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
-</body>
-</html>
+
+
+</body></html>
