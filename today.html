@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
 <meta charset="UTF-8">
 <title>今日のメモ</title>
 <style>
@@ -96,7 +95,7 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus"></div>
+  <div class="save-status" id="saveStatus">保存中…</div>
   <h1>2026-07-17</h1>
   <div class="status">
     前回は音楽と記録の反応が良かったので、手を動かす「つくる」系を軸に、まだ出していないジャンルを混ぜました。
@@ -129,7 +128,7 @@
   </div>
 
   <div class="task">
-    <input type="checkbox" id="t3">
+    <input type="checkbox" id="t3" checked="">
     <label for="t3">
       玄関のドアノブを固く絞った布でさっと拭く
       <span class="time">1分・掃除</span>
@@ -270,5 +269,6 @@ document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
 var taEl = document.querySelector('textarea');
 if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
-</body>
-</html>
+
+
+</body></html>
