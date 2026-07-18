@@ -7,3 +7,4 @@
 2026-07-03 | t1:語学あいさつ(語学,2分)done=0,rx=none | t2:写真一言(趣味,3分)done=0,rx=none | t3:アプリ整理(整理,1分)done=0,rx=none | t4:仕組み調べ(学び,10分)done=1,rx=good | t5:良かったこと日記(記録,2分)done=0,rx=none | comment: (なし)
 2026-07-08 | t1:好きな曲を通しで聴く(音楽,5分)done=1,rx=good | t2:紐で結び方練習(手芸,3分)done=0,rx=none | t3:レシートふり返り(家計,1分)done=0,rx=none | t4:空の色を言葉に(観察,1分)done=0,rx=none | t5:ちょっと良かったこと日記(記録,2分)done=1,rx=good | comment: ちょっとよかったのは、朝バタバタしながらも信号のつながりがやたらよかったり、スムーズに社内バスに乗れたことかな。
 2026-07-17 | t1:豆本表紙作り(工作,10分×7日)done=0,rx=none | t2:一文物語(創作,3分)done=0,rx=none | t3:ドアノブ拭き(掃除,1分)done=1,rx=good | t4:原材料メモ(雑学,3分)done=0,rx=none | t5:朗読(朗読,3分)done=0,rx=none | comment: お掃除系のタスクはいいですねぇ。
+2026-07-18 | t1:気になる本1ページ(読書,3分)done=0,rx=none | t2:違う濃さでお茶(料理,5分)done=0,rx=none | t3:外国語あいさつ(語学,2分)done=0,rx=none | t4:豆知識ノート(学び,10分×7日)done=0,rx=none | t5:ペン3本処分(片付け,3分)done=0,rx=none | comment: (なし)
