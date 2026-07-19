@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
 <meta charset="UTF-8">
 <title>今日のメモ</title>
 <style>
@@ -96,7 +95,7 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus"></div>
+  <div class="save-status" id="saveStatus">保存中…</div>
   <h1>2026-07-19</h1>
   <div class="status">
     昨日の提案は反応が付かなかったので、今日はしばらく出していなかった音楽・記録・観察系を中心に、体を動かさず気軽に始められるものを集めました。
@@ -109,7 +108,7 @@
       <span class="time">5分・音楽</span>
     </label>
     <div class="rx-group">
-      <button type="button" class="rx" data-v="good">😊</button>
+      <button type="button" class="rx selected" data-v="good">😊</button>
       <button type="button" class="rx" data-v="neutral">😐</button>
       <button type="button" class="rx" data-v="bad">😕</button>
     </div>
@@ -270,5 +269,6 @@ document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
 var taEl = document.querySelector('textarea');
 if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
-</body>
-</html>
+
+
+</body></html>
