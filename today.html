@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
 <meta charset="UTF-8">
 <title>今日のメモ</title>
 <style>
@@ -96,14 +95,14 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus"></div>
+  <div class="save-status" id="saveStatus">保存中…</div>
   <h1>2026-07-20</h1>
   <div class="status">
     昨日は「じっくり眺める」だけ実行できていて、音楽と趣味の提案にも良い反応がありました。新しく借りたスペースの話も踏まえ、今日はものづくりや空間まわりのタスクも少し混ぜています。
   </div>
 
   <div class="task">
-    <input type="checkbox" id="t1">
+    <input type="checkbox" id="t1" checked="">
     <label for="t1">
       新しく借りた物置スペースに最初に置きたいものを、思いつくまま3つだけ紙に書き出してみる
       <span class="time">3分・収納</span>
@@ -270,5 +269,6 @@ document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
 var taEl = document.querySelector('textarea');
 if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
-</body>
-</html>
+
+
+</body></html>
