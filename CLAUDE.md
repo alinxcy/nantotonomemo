@@ -15,7 +15,8 @@
   前回 `today.html` の結果(done / 反応 / コメント)を `log.md` に記録し、
   新しい5提案で `today.html` を上書きする。保守的に振る舞う(1件で断定しない)。
 - **週次=統合層**: `prompt_weekly.md` / 木曜 01:30 JST(`30 1 * * 4` JST = UTC `30 16 * * 3`、使用量リセット直後)。
-  `log.md` 全体を読み、`profile.md` を根拠つきで更新する。`today.html` には一切触れない。
+  `log.md` 全体を読み、`profile.md`(確定人格)を根拠つきで更新し、`persona_log.md`
+  (週報=仮説プール + 変更監査)へ追記する。`today.html` には一切触れない。
 
 ルーティンを動かすときは、必ず対応するプロンプト(cron / weekly)の手順に **そのまま** 従う。
 迷ったら「役割を混ぜない」を優先する(採取と統合、today.html と log.md を混同しない)。
@@ -45,14 +46,15 @@
 | `today_template.html` | 固定デザインテンプレート | しない |
 | `onboarding.html` | 初回診断フロー(15問) | しない |
 | `log.md` | 過去結果の蓄積(1日1行の構造化) | 日次のみ末尾追記 |
-| `profile.md` | 安定的な人物像(根拠つき) | 日次(明示要望)/ 週次(統合) |
+| `profile.md` | 安定的な人物像(根拠つき・確定人格のみ) | 日次(明示要望)/ 週次(統合) |
+| `persona_log.md` | 週次の人格ログ(週報・仮説プール・変更監査) | 週次のみ追記専用 |
 | `DESIGN.md` | 設計思想・決定の背景 | 設計を変えたときのみ |
 
 ## 読み込み順(新しいセッションで作業を始めるとき)
 
 1. この `CLAUDE.md` → 2. `DESIGN.md`(なぜ) →
 3. 動かす対象のプロンプト(`prompt_cron.md` か `prompt_weekly.md`) →
-4. `profile.md` / `log.md`(現状)。
+4. `profile.md` / `log.md`(現状)。週次なら `persona_log.md`(前回の週報・仮説プール)も。
 
 ## commit / push
 
