@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
 <meta charset="UTF-8">
 <title>今日のメモ</title>
 <style>
@@ -96,7 +95,7 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus"></div>
+  <div class="save-status" id="saveStatus">保存中…</div>
   <h1>2026-07-22</h1>
   <div class="status">
     前回はレシートを手に取っただけで、他は未着手でした。今日は工作や学びから少し離れて、文房具・スケッチ・手紙など普段あまり出していない切り口を混ぜています。
@@ -168,7 +167,7 @@
   </div>
 
   <div class="label-small">今日のひとこと(任意)</div>
-  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも"></textarea>
+  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも">今日は全然やる気でない日だ～</textarea>
 
 <script>
 document.querySelectorAll('.rx').forEach(function(btn){
@@ -270,5 +269,6 @@ document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
 var taEl = document.querySelector('textarea');
 if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
-</body>
-</html>
+
+
+</body></html>
