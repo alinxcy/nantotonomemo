@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja"><head>
+<html lang="ja">
+<head>
 <meta charset="UTF-8">
 <title>今日のメモ</title>
 <style>
@@ -95,17 +96,17 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus">保存中…</div>
-  <h1>2026-07-24</h1>
+  <div class="save-status" id="saveStatus"></div>
+  <h1>2026-07-25</h1>
   <div class="status">
-    前回は線画スケッチだけ反応が良く、他はやる気の出ない日で手つかずでした。今日は考え込まずすぐ手が動く、短く終わるものを中心にしています。
+    前回は折り紙・習字・俳句など創作寄りの回で、靴の土ぼこり拭きだけに反応がありました。今日は掃除・雑学・音楽・観察・記録とジャンルを大きく散らしています。
   </div>
 
   <div class="task">
     <input type="checkbox" id="t1">
     <label for="t1">
-      手近な紙を1枚用意して、角と角を合わせて三角に折るだけ(それ以上進めなくてもよい)
-      <span class="time">2分・折り紙</span>
+      洗面台や玄関の鏡を1枚選んで、乾いた布かティッシュでサッとひと拭きする
+      <span class="time">1分・掃除</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -117,8 +118,8 @@
   <div class="task">
     <input type="checkbox" id="t2">
     <label for="t2">
-      好きな漢字や言葉を1つ選んで、ボールペンでいつもよりゆっくり丁寧に書いてみる
-      <span class="time">3分・習字</span>
+      気になっている言葉や物の名前を1つ選んで、由来や意味をサッと調べてメモしておく
+      <span class="time">3分・雑学</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -130,8 +131,8 @@
   <div class="task">
     <input type="checkbox" id="t3">
     <label for="t3">
-      今日感じた天気や気温を、五七五のリズムに乗せて1句だけひねってみる(季語は気にしなくてよい)
-      <span class="time">3分・俳句</span>
+      最近よく思い出す曲を1曲選んで、手を止めて最初から最後まで通しで聴く
+      <span class="time">5分・音楽</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -143,11 +144,11 @@
   <div class="task">
     <input type="checkbox" id="t4">
     <label for="t4">
-      玄関の靴を1足選んで、乾いた布やティッシュで土ぼこりだけさっと拭き取る
-      <span class="time">2分・身だしなみ</span>
+      今いる部屋や窓の外を2分だけぼーっと眺めて、目に留まったものを1つだけ書き留める
+      <span class="time">2分・観察</span>
     </label>
     <div class="rx-group">
-      <button type="button" class="rx selected" data-v="good">😊</button>
+      <button type="button" class="rx" data-v="good">😊</button>
       <button type="button" class="rx" data-v="neutral">😐</button>
       <button type="button" class="rx" data-v="bad">😕</button>
     </div>
@@ -156,8 +157,8 @@
   <div class="task">
     <input type="checkbox" id="t5">
     <label for="t5">
-      好きな本や歌詞の一節を、1日10分だけノートに書き写していく(初日はどの文章にするか選ぶだけでもよい)
-      <span class="time">1日10分×7日・書き写し</span>
+      その日ちょっと良かったことを1行だけノートに書き足していく(初日は書くこと自体が目的でよい)
+      <span class="time">1日10分×7日・記録</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -167,9 +168,7 @@
   </div>
 
   <div class="label-small">今日のひとこと(任意)</div>
-  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも">なんか創作系タスクばっかりっすね。。
-ひっさびさに映画館来た。人間もちいかわも変わらず苦しいことあるよね。
-</textarea>
+  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも"></textarea>
 
 <script>
 document.querySelectorAll('.rx').forEach(function(btn){
@@ -271,6 +270,5 @@ document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
 var taEl = document.querySelector('textarea');
 if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
-
-
-</body></html>
+</body>
+</html>
