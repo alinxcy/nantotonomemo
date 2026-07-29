@@ -16,3 +16,4 @@
 2026-07-25 | t1:鏡ひと拭き(掃除,1分)done=0,rx=none | t2:言葉の由来メモ(雑学,3分)done=0,rx=none | t3:好きな曲を通しで聴く(音楽,5分)done=0,rx=none | t4:2分間の風景観察(観察,2分)done=0,rx=none | t5:良かったこと日記(記録,1日10分×7日)done=0,rx=none | comment: (なし)
 2026-07-26 | t1:本1冊パラパラ(読書,1分)done=0,rx=none | t2:食材切り方チェンジ(料理,5分)done=0,rx=none | t3:糸通し練習(手芸,5分)done=0,rx=none | t4:外国語フレーズ書き出し(語学,3分)done=0,rx=none | t5:しおり折り(創作,1日10分×7日)done=0,rx=none | comment: (なし)
 2026-07-27 | t1:葉のほこり払い(植物,1分)done=0,rx=none | t2:香り10秒(香り,1分)done=0,rx=none | t3:収集品メモ(収集,3分)done=0,rx=none | t4:景色を五七五(俳句,3分)done=0,rx=none | t5:不要品1個選び(片付け,1日10分×7日)done=0,rx=none | comment: (なし)
+2026-07-29 | t1:音の聞き比べ(音探し,2分)done=0,rx=none | t2:月/雲を1分観察(天体,1分)done=0,rx=none | t3:賞味期限順に並べ替え(整理,3分)done=0,rx=none | t4:紙切れコラージュ(コラージュ,5分)done=0,rx=none | t5:天気ひとこと記録(観察,1日3分×7日)done=0,rx=none | comment: 昨日は寝落ちしてしまったので書けなかった。
