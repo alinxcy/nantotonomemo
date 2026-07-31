@@ -95,17 +95,17 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus">保存中…</div>
-  <h1>2026-07-31</h1>
+  <div class="save-status" id="saveStatus"></div>
+  <h1>2026-08-01</h1>
   <div class="status">
-    ここ数日はチェックや反応の記録が途切れています。今日は語学・音楽・雑学・手芸・読書と、直近数日とは違う切り口を選んでいます。
+    ここ数日、チェックや反応の記録が続けて途切れています。今日は掃除・創作・記録・料理・手紙と、直近数日とは違う切り口を選んでいます。
   </div>
 
   <div class="task">
     <input type="checkbox" id="t1">
     <label for="t1">
-      知っている外国語の単語をひとつ選び、意味を紙に書き出す
-      <span class="time">2分・語学</span>
+      鏡についた手あかを1分だけ拭き取る
+      <span class="time">1分・掃除</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -117,8 +117,8 @@
   <div class="task">
     <input type="checkbox" id="t2">
     <label for="t2">
-      アルバムの中で普段飛ばしがちな曲を1曲、意識して通しで聴いてみる
-      <span class="time">5分・音楽</span>
+      余った紙を四角く切って、小さなメモ帳を作り進める。1日10分ずつ4日で1冊に
+      <span class="time">1日10分×4日・創作</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -130,8 +130,8 @@
   <div class="task">
     <input type="checkbox" id="t3">
     <label for="t3">
-      知っている雑学をひとつ選び、誰かに話すつもりで声に出して説明してみる
-      <span class="time">3分・雑学</span>
+      今日感じた小さな違和感をひとことだけメモする
+      <span class="time">2分・記録</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -143,8 +143,8 @@
   <div class="task">
     <input type="checkbox" id="t4">
     <label for="t4">
-      余っているボタンやビーズで、小さな飾りを1日10分ずつ作り進める。1週間続けると形になる
-      <span class="time">1日10分×7日・手芸</span>
+      冷蔵庫にある調味料をひとつ、いつもと違う料理に使ってみる
+      <span class="time">5分・料理</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -156,8 +156,8 @@
   <div class="task">
     <input type="checkbox" id="t5">
     <label for="t5">
-      本棚から気になる本を1冊選び、最初の1ページだけ読んでみる
-      <span class="time">3分・読書</span>
+      誰かに送るつもりで、便箋やメモに一言だけ書いてみる(送らなくてもよい)
+      <span class="time">3分・手紙</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -167,7 +167,7 @@
   </div>
 
   <div class="label-small">今日のひとこと(任意)</div>
-  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも">自分と相手で前提は違うので、端折ってしゃべると全然違った意味でとらえられてしまうっすね。定期的にこれ思ってる。学習しないと。</textarea>
+  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも"></textarea>
 
 <script>
 document.querySelectorAll('.rx').forEach(function(btn){
