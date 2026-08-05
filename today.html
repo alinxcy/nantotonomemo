@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja"><head>
+<html lang="ja">
+<head>
 <meta charset="UTF-8">
 <title>今日のメモ</title>
 <style>
@@ -95,17 +96,17 @@
 </head>
 <body>
 
-  <div class="save-status" id="saveStatus">保存中…</div>
-  <h1>2026-08-05</h1>
+  <div class="save-status" id="saveStatus"></div>
+  <h1>2026-08-06</h1>
   <div class="status">
-    ここ数日はチェックや反応の記録が続けてなく、今日も料理・語学・片付け・香り・読書と最近と重ならない切り口を選んでいます。
+    ここ最近はチェックや反応の記録が続いておらず、靴の片付けのように直近と重なる題材も出ていたため、今日は身だしなみ・スケッチ・記憶・試作・俳句と最近と重ならない切り口を選んでいます。
   </div>
 
   <div class="task">
     <input type="checkbox" id="t1">
     <label for="t1">
-      普段使わない調味料をひとつ選んで、スプーン一杯だけ味見してみる
-      <span class="time">5分・料理</span>
+      普段使うカバンやポーチの持ち手を乾いた布で1分だけ拭く
+      <span class="time">1分・身だしなみ</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -117,8 +118,8 @@
   <div class="task">
     <input type="checkbox" id="t2">
     <label for="t2">
-      気になっている外国語のフレーズをひとつ選んで、声に出して3回読んでみる
-      <span class="time">2分・語学</span>
+      机の上にあるものをひとつ選んで、3分だけ簡単な線画を描いてみる
+      <span class="time">3分・スケッチ</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -130,8 +131,8 @@
   <div class="task">
     <input type="checkbox" id="t3">
     <label for="t3">
-      玄関にある履いていない靴を1足だけ靴箱の奥にしまう
-      <span class="time">3分・片付け</span>
+      小さいころによく見ていたテレビ番組や遊びをひとつ思い出してメモする
+      <span class="time">5分・記憶</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -143,8 +144,8 @@
   <div class="task">
     <input type="checkbox" id="t4">
     <label for="t4">
-      キッチンやお風呂場にある香りのするものをひとつ選んで、10秒だけ香りをかいでみる
-      <span class="time">1分・香り</span>
+      家にある紙や輪ゴムなど身近な材料で、簡単な小物を毎日10分だけ試作してみる(1週間で形になる)
+      <span class="time">1日10分×7日・試作</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -156,8 +157,8 @@
   <div class="task">
     <input type="checkbox" id="t5">
     <label for="t5">
-      本棚から気になる1冊を選んで、毎日3分だけ読み進める(1週間で読める分だけ進める)
-      <span class="time">1日3分×7日・読書</span>
+      今の気分をひとことだけ五七五にしてみる
+      <span class="time">2分・俳句</span>
     </label>
     <div class="rx-group">
       <button type="button" class="rx" data-v="good">😊</button>
@@ -167,8 +168,7 @@
   </div>
 
   <div class="label-small">今日のひとこと(任意)</div>
-  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも">このメモをその日に開いたかどうか、も記録できるようにしたいっすね。
-靴はこの前奥にしまったから、惜しかった。。</textarea>
+  <textarea placeholder="今日感じたこと、気になったこと、要望など、なんでも"></textarea>
 
 <script>
 document.querySelectorAll('.rx').forEach(function(btn){
@@ -270,6 +270,5 @@ document.querySelectorAll('.task input[type="checkbox"]').forEach(function(cb){
 var taEl = document.querySelector('textarea');
 if (taEl) taEl.addEventListener('input', scheduleSave);
 </script>
-
-
-</body></html>
+</body>
+</html>
